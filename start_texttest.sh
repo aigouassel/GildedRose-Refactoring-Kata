@@ -1,7 +1,9 @@
 #!/bin/sh
 
+clear
+
 if [ ! -d "venv" ]; then
-    python -m venv venv
+    python3 -m venv venv
 fi
 venv/bin/pip install texttest
 venv/bin/texttest -d . -con "$@"
