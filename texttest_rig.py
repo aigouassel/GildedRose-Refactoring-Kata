@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """
 This script uses npx to execute the TextTest Fixture for TypeScript.
 It is designed to be used by TextTest and specified in the file 'texttests/config.gr' in this repo.
@@ -11,4 +11,5 @@ import sys
 
 args = " ".join(sys.argv[1:])
 TEXTTEST_HOME = os.environ.get("TEXTTEST_HOME", os.getcwd())
-subprocess.run(f"npx ts-node {TEXTTEST_HOME}/TypeScript/test/golden-master-text-test.ts {args}", shell=True)
+print(TEXTTEST_HOME)
+subprocess.run(f"npx ts-node {TEXTTEST_HOME}/test/golden-master-text-test.ts {args}", shell=True)
