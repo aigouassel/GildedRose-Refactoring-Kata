@@ -27,50 +27,53 @@ export class GildedRose {
   }
 
   updateQuality() {
-    for (let i = 0; i < this.items.length; i++) {
-      if (
-        this.items[i].name === ItemName.BRIE &&
-        this.items[i].name != ItemName.BACKSTAGE_PASSES
-      ) {
-        if (this.items[i].quality > 0) {
-          if (this.items[i].name != ItemName.SULFURAS) {
-            this.items[i].quality = this.items[i].quality - 1;
+    for (const item of this.items) {
+      if (item.name === ItemName.SULFURAS) {
+        continue;
+      }
+
+      item.sellIn = item.sellIn - 1;
+
+      if ([ItemName.ELIXIR, ItemName.VEST].includes(item.name)) {
+        if (item.quality > 0) {
+          item.quality = item.sellIn < 0 ? item.quality - 2 : item.quality - 1;
+        }
+        continue;
+      }
+
+      if (item.name === ItemName.BRIE) {
+        if (item.quality < 50) {
+          item.quality = item.sellIn < 0 ? item.quality + 2 : item.quality + 1;
+        }
+        continue;
+      }
+
+      if (item.name === ItemName.CAKE) {
+        if (item.quality > 0) {
+          item.quality = item.quality - 1;
+
+          if (item.sellIn < 0 && item.quality > 0) {
+            item.quality = item.quality - 1;
           }
         }
-      } else {
-        if (this.items[i].quality < 50) {
-          this.items[i].quality = this.items[i].quality + 1;
-          if (this.items[i].name == ItemName.BACKSTAGE_PASSES) {
-            if (this.items[i].sellIn < 11) {
-              if (this.items[i].quality < 50) {
-                this.items[i].quality = this.items[i].quality + 1;
-              }
-            }
-            if (this.items[i].sellIn < 6) {
-              if (this.items[i].quality < 50) {
-                this.items[i].quality = this.items[i].quality + 1;
-              }
-            }
-          }
+        continue;
+      }
+
+      if (item.name === ItemName.BACKSTAGE_PASSES) {
+        if (item.sellIn < 0) {
+          item.quality = 0;
+          continue;
         }
-      }
-      if (this.items[i].name != ItemName.SULFURAS) {
-        this.items[i].sellIn = this.items[i].sellIn - 1;
-      }
-      if (this.items[i].sellIn < 0) {
-        if (this.items[i].name != ItemName.BRIE) {
-          if (this.items[i].name != ItemName.BACKSTAGE_PASSES) {
-            if (this.items[i].quality > 0) {
-              if (this.items[i].name != ItemName.SULFURAS) {
-                this.items[i].quality = this.items[i].quality - 1;
-              }
-            }
-          } else {
-            this.items[i].quality = 0;
+        if (item.quality < 50) {
+          item.quality = item.quality + 1;
+        }
+
+        if (item.quality < 50) {
+          if (item.sellIn < 10) {
+            item.quality = item.quality + 1;
           }
-        } else {
-          if (this.items[i].quality < 50) {
-            this.items[i].quality = this.items[i].quality + 1;
+          if (item.sellIn < 5) {
+            item.quality = item.quality + 1;
           }
         }
       }
