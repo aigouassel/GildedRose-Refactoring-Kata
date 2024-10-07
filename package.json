@@ -1,7 +1,7 @@
 {
-  "name": "gilded-rose-kata",
+  "name": "ddd-gilded-rose-kata",
   "version": "1.0.0",
-  "description": "Gilded Rose kata in TypeScript",
+  "description": "A DDD apporach to Gilded Rose kata in TypeScript",
   "scripts": {
     "precompile": "rimraf app/**/*.js test/**/*.js",
     "compile": "tsc",
@@ -9,6 +9,9 @@
     "test": "yarn test:mocha --all",
     "cover:report": "nyc report --reporter=lcov --reporter=text",
     "lint": "tslint --project '.' --fix"
+  },
+  "repository": {
+    "url": "https://github.com/aigouassel/GildedRose-Refactoring-Kata.git"
   },
   "license": "MIT",
   "private": true,
