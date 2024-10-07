@@ -8,13 +8,13 @@
     "baseUrl": "./",
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "experimentalDecorators": true,
     "paths": {
-      "@/*": [
-        "app/*"
-      ]
+      "@build": ["build/index"],
+      "@core": ["lib/gilded-rose/core/index"],
+      "@adapters": ["lib/gilded-rose/adapters/index"],
+      "@ddd": ["lib/ddd/index"]
     }
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

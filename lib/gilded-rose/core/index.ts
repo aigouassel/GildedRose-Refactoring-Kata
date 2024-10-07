@@ -1,0 +1,10 @@
+export { CoreIdentifiers } from "./CoreIdentifiers";
+export { GildedRose } from "./domain/entities/GildedRose";
+export { Item, ItemProperties } from "./domain/entities/Item";
+export { GildedRoseRepository } from "./domain/repositories/GildedRoseRepository";
+export { CreateGildedRose } from "./domain/usecases/CreateGildedRose";
+export { AddItemToGildedRose } from "./domain/usecases/AddItemToGildedRose";
+export { GetGildedRoseById } from "./domain/usecases/GetGildedRoseById";
+export { InventoryGildedRose } from "./domain/usecases/InventoryGildedRose";
+export { GetItemById } from "./domain/usecases/GetItemById";
+export { ItemName } from "./domain/types/ItemName";
